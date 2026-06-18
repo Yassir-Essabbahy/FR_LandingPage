@@ -18,6 +18,8 @@ import {
 import type { ComponentType, ReactNode, SVGProps } from 'react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Dashboard from './components/Dashboard'
+import HubAvatar from './components/HubAvatar'
 import { Navbar } from './components/Navbar'
 import { SectionWrapper } from './components/SectionWrapper'
 
@@ -110,6 +112,7 @@ function Hero() {
           </motion.p>
           <motion.div variants={fadeUp} transition={{ duration: 0.8 }} className="mt-10 flex flex-col gap-4 sm:flex-row">
             <ButtonLink href="#create-project">Create Project</ButtonLink>
+            <ButtonLink href="/dashboard" variant="light">Open Dashboard</ButtonLink>
             <ButtonLink href="#solutions" variant="light">Explore benefits</ButtonLink>
           </motion.div>
         </motion.div>
@@ -373,7 +376,13 @@ function ProjectPreview({ selectedStyle }: { selectedStyle: string }) {
           </div>
           <div className="flex flex-wrap gap-3">
             <ActionButton variant="secondary" icon={Share2}>Share Project</ActionButton>
-            <ActionButton icon={MonitorPlay}>Join Hub & Avatar</ActionButton>
+            <a
+              href="/hub-avatar"
+              className="inline-flex min-h-12 items-center justify-center gap-3 border border-primary bg-primary px-5 text-sm font-medium text-cream transition hover:bg-[#2B2B2B] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
+            >
+              <MonitorPlay className="h-4 w-4" aria-hidden="true" />
+              Join Hub & Avatar
+            </a>
           </div>
         </div>
 
@@ -462,6 +471,9 @@ function Footer() {
 export default function App() {
   const [selectedStyle, setSelectedStyle] = useState('Modern')
   const [showPreview, setShowPreview] = useState(false)
+  const currentPath = window.location.pathname.replace(/\/$/, '')
+  const isDashboardPage = currentPath === '/dashboard'
+  const isHubAvatarPage = currentPath === '/hub-avatar'
 
   const handlePreview = () => {
     setShowPreview(true)
@@ -469,6 +481,14 @@ export default function App() {
       window.history.replaceState(null, '', '#project-preview')
       document.getElementById('project-preview')?.scrollIntoView({ behavior: 'auto', block: 'start' })
     }, 80)
+  }
+
+  if (isDashboardPage) {
+    return <Dashboard />
+  }
+
+  if (isHubAvatarPage) {
+    return <HubAvatar />
   }
 
   return (

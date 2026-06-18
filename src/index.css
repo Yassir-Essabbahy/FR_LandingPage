@@ -31,3 +31,20 @@
     @apply py-20 sm:py-28 lg:py-36;
   }
 }
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.33);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.glass-panel-strong {
+  background: rgba(255, 255, 255, 0.44);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.dashboard-bg {
+  background: linear-gradient(252deg, #e7f1fa 0%, #c7e1f1 14.42%, #f2ecf9 100%);
+  min-height: 100vh;
+}

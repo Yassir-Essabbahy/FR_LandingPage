@@ -14,6 +14,9 @@ export default {
       fontFamily: {
         display: ['Playfair Display', 'Georgia', 'serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
+        lato: ['Lato', 'Inter', 'system-ui', 'sans-serif'],
+        roboto: ['Roboto', 'Inter', 'system-ui', 'sans-serif'],
+        inter: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },
