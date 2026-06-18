@@ -1,147 +1,114 @@
-# VR Boost Front-End Prototype
+# VR Boost — Virtual Home Staging Platform (Front-End Prototype)
 
-VR Boost is a front-end-only React/Vite prototype for a virtual real estate staging product. It combines a public landing page with a copied dashboard experience and a Hub & Avatar page for guided remote property visits.
+VR Boost is a front-end prototype for a virtual real estate staging product. It gives agencies, developers, and furniture brands a way to present a listing as a fully staged, guided digital showroom before the property is move-in ready, photographed, or furnished.
 
-There is no backend, database, authentication, or API integration in this version. All pages use static mock data, external image URLs, and client-side routing based on the browser path.
+The prototype covers three experiences: a public-facing landing page that pitches the product and lets a user spin up a mock project, an operations dashboard for tracking visits and listings, and a Hub & Avatar page for guided remote walkthroughs led by a live or virtual host.
+
+This version is intentionally front-end only. There is no backend, database, or authentication — every page runs on static mock data and client-side routing, with the goal of validating the product concept, the user flow, and the visual direction before any infrastructure work begins.
 
 ## Screenshots
 
 ### Landing Page
-
-The landing page introduces the premium B2B positioning, main calls to action, and links to the dashboard and Hub & Avatar pages.
+The landing page introduces the premium B2B positioning, the main calls to action, and entry points into the dashboard and Hub & Avatar experiences.
 
 ![Landing page screenshot](Screenshots/LandingPage.png)
 
 ### Showcase Builder
-
-The create project section lets the user enter property details, add a Matterport URL, and select a staging direction.
+The project creation flow lets a user enter property details, attach a Matterport 3D tour URL, and choose a staging direction (Modern, Scandinavian, or Luxury).
 
 ![Create project screenshot](Screenshots/CreateProject.png)
 
 ### Dashboard
-
-The dashboard shows the copied Fusion dashboard experience with glass panels, visit metrics, latest visits, and navigation to other app sections.
+The dashboard gives the agency side of the product a home: visit metrics, recent activity, and navigation into the rest of the app, all wrapped in a glass-panel visual style.
 
 ![Dashboard screenshot](Screenshots/Dashbord.png)
 
 ### Hub & Avatar
-
-The Hub & Avatar page presents guided visit sessions, avatar presets, and a premium remote walkthrough experience.
+The Hub & Avatar page is where a guided remote visit actually happens — session overview, live metrics, and avatar presets for hosting a walkthrough.
 
 ![Hub and Avatar screenshot](Screenshots/Hub%26Staging.png)
 
 ## Pages
 
-### Landing Page
+### Landing Page — `/`
 
-Route: `/`
+- Hero section with primary calls to action
+- Benefit sections for home staging, guided visits, agencies, and furniture brand partnerships
+- A project creation form (mock) covering property name, surface area, address, and Matterport URL
+- A staging style selector (Modern / Scandinavian / Luxury)
+- An optional project preview, revealed after clicking "Generate Preview", showing the selected style and a sample furniture set
+- Links into the dashboard and Hub & Avatar pages
 
-The landing page introduces the VR Boost product and includes:
+### Dashboard — `/dashboard`
 
-- Hero section with primary CTAs
-- Benefits for home staging, Hub & Avatar, agencies, and furniture brands
-- Fake project creation form
-- Style selector for staging concepts
-- Optional project preview section after clicking `Generate Preview`
-- Links to the dashboard and Hub & Avatar page
+An operations view for the agency side of the product, built to run standalone in this Vite app with no router or backend dependency. It includes a sidebar, statistics cards, a list of recent visits, and mock user/avatar data, plus navigation back to the landing page and into Hub & Avatar.
 
-### Dashboard
+### Hub & Avatar — `/hub-avatar`
 
-Route: `/dashboard`
+A front-end-only page styled to match the dashboard, representing the live guided-visit experience: hub session overview, active hub/avatar/message metrics, a featured visit preview, upcoming sessions, and avatar presets.
 
-The dashboard was copied from the `fusion-starter-77b` folder and adapted to run inside this Vite app without React Router or backend dependencies.
+## Why This Architecture
 
-It includes:
+A few decisions were made deliberately, given the scope of a three-page prototype:
 
-- Glass-style dashboard shell
-- Sidebar navigation
-- Static statistics cards
-- Latest visits list
-- User/avatar mock data
-- Link back to the landing page
-- Link to the Hub & Avatar page
+**No React Router.** With only three routes and no nested layouts, a router adds a dependency without adding much value. `App.tsx` instead reads `window.location.pathname` once at render time and switches between the landing page, the dashboard, and Hub & Avatar. This keeps the bundle smaller and the routing logic easy to follow in a single file.
 
-### Hub & Avatar
+**No backend.** The goal of this stage of the project is to validate the concept and the interaction design, not to build infrastructure. All visits, sessions, avatars, and furniture data are static, which makes the prototype fast to iterate on and easy to demo without any setup beyond `npm install`.
 
-Route: `/hub-avatar`
-
-The Hub & Avatar page is a front-end-only page styled to match the dashboard.
-
-It includes:
-
-- Hub session overview
-- Active hub/avatar/message metrics
-- Featured guided visit preview
-- Upcoming sessions
-- Avatar presets
-- Links back to the dashboard and landing page
+**Shared visual language across pages.** The landing page, dashboard, and Hub & Avatar all draw from the same palette and the same glass-panel pattern, so the product reads as one cohesive system rather than three disconnected screens.
 
 ## Tech Stack
 
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Lucide React icons
+- React 18 with TypeScript
+- Vite for the build and dev server
+- Tailwind CSS for styling
+- Framer Motion for entrance animations on the landing page
+- Lucide React for icons
 
 ## Project Structure
 
 ```text
 src/
-  App.tsx                         Main app, landing page, simple route switch
-  main.tsx                        React entry point
-  index.css                       Tailwind layers and shared glass/dashboard styles
+  App.tsx                Landing page, project creation flow, and the path-based route switch
+  main.tsx                React entry point
+  index.css               Tailwind layers and shared glass/dashboard styles
   components/
-    Dashboard.tsx                 Copied/adapted dashboard page
-    HubAvatar.tsx                 Hub & Avatar page
-    Navbar.tsx                    Landing page navigation
-    SectionWrapper.tsx            Reusable landing section wrapper
+    Dashboard.tsx          Dashboard page
+    HubAvatar.tsx          Hub & Avatar page
+    Navbar.tsx             Landing page navigation
+    SectionWrapper.tsx     Reusable landing section wrapper
   data/
-    mock-data.ts                  Landing navbar link data
+    mock-data.ts           Navbar link data
   hooks/
-    useInView.ts                  Existing animation/view hook
+    useInView.ts           Scroll-triggered animation hook
 ```
 
 ## Routing
 
-This project does not use `react-router-dom`. Routing is intentionally simple:
+Routing is handled without `react-router-dom`, by design:
 
-- `App.tsx` checks `window.location.pathname`
-- `/dashboard` renders the dashboard page
+- `App.tsx` reads `window.location.pathname`
+- `/dashboard` renders the dashboard
 - `/hub-avatar` renders the Hub & Avatar page
 - every other path renders the landing page
 
-This keeps the prototype front-end-only and avoids adding routing dependencies.
+If the page count grows beyond this, migrating to `react-router-dom` would be the natural next step (see Future Improvements).
 
 ## Styling
 
-The site uses a shared dashboard-inspired palette:
+The product uses a shared, dashboard-inspired palette:
 
-- Soft blue/lavender gradient background
-- Charcoal text
-- Muted blue-gray secondary text
-- Glass panels with translucent white backgrounds
-- Blue-gray accents and borders
+- A soft blue/lavender gradient background
+- Charcoal primary text with a muted blue-gray secondary tone
+- Glass panels: translucent white surfaces with soft borders
+- Blue-gray accents throughout
 
-The palette is defined in:
+The palette lives in `tailwind.config.js`, and the shared glass styles live in `src/index.css`. Key utility classes:
 
-```text
-tailwind.config.js
-```
-
-Shared glass styles are defined in:
-
-```text
-src/index.css
-```
-
-Important utility classes:
-
-- `dashboard-bg` - shared gradient background
-- `glass-panel` - translucent glass surface
-- `glass-panel-strong` - stronger active glass surface
-- `section-padding` - shared landing page horizontal padding
+- `dashboard-bg` — the shared gradient background
+- `glass-panel` — the translucent glass surface
+- `glass-panel-strong` — a stronger, "active" glass surface
+- `section-padding` — shared horizontal padding for landing page sections
 
 ## Getting Started
 
@@ -157,13 +124,13 @@ Start the dev server:
 npm run dev
 ```
 
-If PowerShell blocks `npm.ps1`, use:
+On Windows, if PowerShell blocks `npm.ps1`, use:
 
 ```bash
 npm.cmd run dev
 ```
 
-Open:
+Then open:
 
 ```text
 http://127.0.0.1:5173
@@ -171,57 +138,47 @@ http://127.0.0.1:5173
 
 ## Available Scripts
 
-Run local development server:
-
 ```bash
-npm run dev
+npm run dev       # Start the local development server
+npm run build     # Build for production
+npm run preview   # Preview the production build locally
 ```
 
-Build for production:
-
-```bash
-npm run build
-```
-
-Preview the production build:
-
-```bash
-npm run preview
-```
-
-## Important URLs
+## Routes
 
 ```text
 /             Landing page
-/dashboard    Dashboard page
-/dashbord     Dashboard page typo alias
-/hub-avatar   Hub & Avatar page
+/dashboard    Dashboard
+/hub-avatar   Hub & Avatar
 ```
 
-## Vercel Deployment
+## Deployment (Vercel)
 
-This is a Vite single-page app with front-end routes such as `/dashboard` and `/hub-avatar`. Vercel needs a rewrite so direct visits or refreshes on those routes still load `index.html`.
+This is a Vite single-page app with client-side routes (`/dashboard`, `/hub-avatar`). Because Vercel serves files by exact path, a direct visit or a page refresh on one of those routes needs to be redirected back to `index.html` so the app can take over and render the right page.
 
-That rewrite is configured in:
+That rewrite rule lives in `vercel.json`:
 
-```text
-vercel.json
+```json
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
 ```
 
-Without this file, Vercel can return `404: NOT_FOUND` when opening `/dashboard` directly.
+Without this file, Vercel returns `404: NOT_FOUND` on a direct visit to `/dashboard` or `/hub-avatar`.
 
-## Notes
+## Current Scope
 
-- The dashboard images and logo are loaded from external Builder.io URLs.
-- Landing page images are loaded from Unsplash.
-- All project, visit, avatar, and session content is mock data.
-- The app is suitable as a visual/prototype front end, not a production app yet.
+- Dashboard and landing images are loaded from external URLs (Builder.io and Unsplash respectively) rather than local assets
+- All project, visit, avatar, and session data is static/mock
+- There is no authentication, persistence, or API layer yet — this is a visual and interaction prototype, not a production build
 
 ## Future Improvements
 
-- Add a real router if the page count grows.
-- Replace external mock images with local assets.
-- Connect project creation to a backend.
-- Add authentication for dashboard access.
-- Store visits, sessions, avatars, and furniture catalog data in an API.
-- Add responsive visual QA across more mobile screen sizes.
+- Introduce a real router (`react-router-dom`) if the page count grows
+- Replace external mock images with local, optimized assets
+- Connect the project creation flow to a real backend
+- Add authentication for dashboard access
+- Persist visits, sessions, avatars, and the furniture catalog through an API
+- Expand responsive QA across a wider range of mobile screen sizes
