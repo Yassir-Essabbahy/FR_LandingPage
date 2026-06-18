@@ -194,8 +194,21 @@ npm run preview
 ```text
 /             Landing page
 /dashboard    Dashboard page
+/dashbord     Dashboard page typo alias
 /hub-avatar   Hub & Avatar page
 ```
+
+## Vercel Deployment
+
+This is a Vite single-page app with front-end routes such as `/dashboard` and `/hub-avatar`. Vercel needs a rewrite so direct visits or refreshes on those routes still load `index.html`.
+
+That rewrite is configured in:
+
+```text
+vercel.json
+```
+
+Without this file, Vercel can return `404: NOT_FOUND` when opening `/dashboard` directly.
 
 ## Notes
 
