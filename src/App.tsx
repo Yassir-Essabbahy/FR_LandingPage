@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  ExternalLink,
   Armchair,
   BadgeCheck,
   Building2,
@@ -379,16 +380,23 @@ function ProjectPreview({ selectedStyle }: { selectedStyle: string }) {
         <div className="grid gap-6 xl:grid-cols-[1.25fr_0.75fr]">
           <article className="overflow-hidden border border-border bg-card shadow-[0_18px_55px_rgba(23,23,23,0.05)]">
             <div className="relative aspect-[16/9] min-h-72 overflow-hidden bg-primary">
-              <iframe
-                className="h-full w-full"
-                src="https://www.youtube.com/embed/ScMzIvxBSi4"
-                title="Project preview placeholder"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+              <img
+                className="h-full w-full object-cover"
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80"
+                alt="Project preview placeholder"
               />
               <div className="pointer-events-none absolute left-6 top-6 border border-white/20 bg-primary/70 px-4 py-3 backdrop-blur">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Large iframe placeholder</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Project preview</p>
               </div>
+              <a
+                href="https://matterport.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pointer-events-auto absolute bottom-6 right-6 flex items-center gap-2 border border-white/20 bg-primary/80 px-4 py-3 backdrop-blur transition-colors hover:bg-primary"
+              >
+                <ExternalLink className="h-4 w-4 text-accent" aria-hidden="true" />
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-cream">View on Matterport</span>
+              </a>
             </div>
           </article>
 
