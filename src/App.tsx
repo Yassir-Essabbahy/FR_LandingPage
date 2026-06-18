@@ -115,7 +115,7 @@ function Hero() {
           </motion.p>
           <motion.div variants={fadeUp} transition={{ duration: 0.8 }} className="mt-10 flex flex-col gap-4 sm:flex-row">
             <ButtonLink href="#create-project">Build a Showcase</ButtonLink>
-            <ButtonLink href="#dashboard" variant="dashboard">Open Dashboard</ButtonLink>
+            <ButtonLink href="/dashboard" variant="dashboard">Open Dashboard</ButtonLink>
             <ButtonLink href="#solutions" variant="light">Explore benefits</ButtonLink>
           </motion.div>
         </motion.div>
@@ -380,7 +380,7 @@ function ProjectPreview({ selectedStyle }: { selectedStyle: string }) {
           <div className="flex flex-wrap gap-3">
             <ActionButton variant="secondary" icon={Share2}>Share Project</ActionButton>
             <a
-              href="#hub-avatar"
+              href="/hub-avatar"
               className="inline-flex min-h-12 items-center justify-center gap-3 border border-primary bg-primary px-5 text-sm font-medium text-cream transition hover:bg-[#2F4550] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
             >
               <MonitorPlay className="h-4 w-4" aria-hidden="true" />
@@ -474,6 +474,9 @@ function Footer() {
 export default function App() {
   const [selectedStyle, setSelectedStyle] = useState('Modern')
   const [showPreview, setShowPreview] = useState(false)
+  const currentPath = window.location.pathname.replace(/\/$/, '')
+  const isDashboardPage = currentPath === '/dashboard'
+  const isHubAvatarPage = currentPath === '/hub-avatar'
 
   const handlePreview = () => {
     setShowPreview(true)
@@ -481,6 +484,14 @@ export default function App() {
       window.history.replaceState(null, '', '#project-preview')
       document.getElementById('project-preview')?.scrollIntoView({ behavior: 'auto', block: 'start' })
     }, 80)
+  }
+
+  if (isDashboardPage) {
+    return <Dashboard />
+  }
+
+  if (isHubAvatarPage) {
+    return <HubAvatar />
   }
 
   return (
@@ -495,18 +506,8 @@ export default function App() {
       <main id="main">
         <Hero />
         <LandingContent />
-
         <CreateProject selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} onPreview={handlePreview} />
-
-        {showPreview && <ProjectPreview selectedStyle={selectedStyle} />}
-
-        <section id="dashboard" className="scroll-mt-24">
-          <Dashboard />
-        </section>
-
-        <section id="hub-avatar" className="scroll-mt-24">
-          <HubAvatar />
-        </section>
+        {showPreview ? <ProjectPreview selectedStyle={selectedStyle} /> : null}
       </main>
       <Footer />
     </div>
