@@ -105,16 +105,16 @@ function Hero() {
       <div className="mx-auto grid max-w-[1500px] gap-12 lg:grid-cols-[0.98fr_1.02fr] lg:items-center xl:gap-20">
         <motion.div initial="hidden" animate="visible" transition={{ staggerChildren: 0.12 }}>
           <motion.p variants={fadeUp} transition={{ duration: 0.7 }} className="mb-5 text-xs font-semibold uppercase tracking-[0.26em] text-accent">
-            Virtual home staging with guided remote visits
+            Premium virtual staging for real estate teams
           </motion.p>
           <motion.h1 id="hero-title" variants={fadeUp} transition={{ duration: 0.8 }} className="max-w-4xl font-display text-5xl font-medium leading-[1.05] text-primary sm:text-6xl lg:text-7xl xl:text-[5rem]">
-            Vr Boost turns empty properties into immersive sales experiences
+            Transform every listing into a guided digital showroom
           </motion.h1>
           <motion.p variants={fadeUp} transition={{ duration: 0.8 }} className="mt-7 max-w-2xl text-lg leading-9 text-secondary">
-            Create virtual staging concepts, connect a Matterport tour, and invite prospects into a Hub & Avatar visit where every room can be explained in real time.
+            VR Boost helps agencies, developers, and furniture brands present properties with elevated staging, curated product placement, and live avatar-led visits built for serious buyers.
           </motion.p>
           <motion.div variants={fadeUp} transition={{ duration: 0.8 }} className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <ButtonLink href="#create-project">Create Project</ButtonLink>
+            <ButtonLink href="#create-project">Build a Showcase</ButtonLink>
             <ButtonLink href="/dashboard" variant="dashboard">Open Dashboard</ButtonLink>
             <ButtonLink href="#solutions" variant="light">Explore benefits</ButtonLink>
           </motion.div>
@@ -141,23 +141,23 @@ function Hero() {
 function LandingContent() {
   const benefits = [
     {
-      title: 'Home Staging',
-      text: 'Show buyers how an empty room can feel furnished, warm, and move-in ready.',
+      title: 'Curated Virtual Staging',
+      text: 'Turn empty rooms into aspirational interiors aligned with the positioning of each property.',
       icon: Sofa,
     },
     {
-      title: 'Hub & Avatar',
-      text: 'Let a virtual guide join the visit, answer questions, and highlight the property story.',
+      title: 'Guided Buyer Journeys',
+      text: 'Give prospects a live, hosted walkthrough where every room has context, flow, and intent.',
       icon: Users,
     },
     {
-      title: 'Agency Benefits',
-      text: 'Shorten the time between first interest and qualified viewing with polished visual assets.',
+      title: 'Agency Sales Assets',
+      text: 'Equip brokers with premium digital presentations that make follow-up sharper and faster.',
       icon: Building2,
     },
     {
-      title: 'Furniture Brands',
-      text: 'Place curated furniture collections directly inside real estate experiences.',
+      title: 'Brand Partnerships',
+      text: 'Place furniture collections inside real buying moments, not disconnected catalog pages.',
       icon: Palette,
     },
   ] as const
@@ -166,9 +166,9 @@ function LandingContent() {
     <>
       <SectionWrapper id="solutions" className="pb-16">
         <SectionHeader
-          eyebrow="Page 1 - Landing page"
-          title="Home staging plus Hub & Avatar for property sales"
-          description="Vr Boost helps agencies and furniture brands present spaces as lived-in, guided, and easy to share."
+          eyebrow="Sales enablement for premium property teams"
+          title="A richer way to market spaces before they are move-in ready"
+          description="Blend virtual interiors, branded furniture catalogs, and guided remote visits into one polished experience your sales team can share with qualified prospects."
         />
         <div className="mx-auto mt-14 grid max-w-7xl gap-6 md:grid-cols-2 xl:grid-cols-4">
           {benefits.map((benefit) => {
@@ -189,9 +189,9 @@ function LandingContent() {
       <section className="section-padding bg-primary py-16 text-cream sm:py-20" aria-label="Landing benefits">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-3">
           {[
-            ['Faster listings', 'Launch polished visuals before furniture or renovation is ready.'],
-            ['Better conversion', 'Help prospects understand scale, flow, and atmosphere earlier.'],
-            ['Brand placement', 'Show furniture pieces inside a real buying context.'],
+            ['Launch earlier', 'Bring high-value listings to market before furnishing, fit-out, or final staging is complete.'],
+            ['Sell the vision', 'Help buyers understand scale, atmosphere, and lifestyle fit before they book a visit.'],
+            ['Monetize the room', 'Create premium placement opportunities for furniture and design partners.'],
           ].map(([title, text]) => (
             <div key={title} className="border-l border-accent/40 pl-6">
               <p className="font-display text-3xl font-medium">{title}</p>
@@ -205,12 +205,12 @@ function LandingContent() {
         <div className="mx-auto max-w-7xl bg-white px-6 py-16 shadow-[0_24px_80px_rgba(23,23,23,0.06)] sm:px-10 sm:py-20 lg:px-16">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Prototype flow</p>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Sales showcase workflow</p>
               <h2 className="max-w-4xl font-display text-4xl font-medium leading-tight text-primary sm:text-5xl lg:text-6xl">
-                Create a fake project and preview the result.
+                Package a property into a premium buyer-facing experience.
               </h2>
             </div>
-            <ButtonLink href="#create-project">Create Project</ButtonLink>
+            <ButtonLink href="#create-project">Build a Showcase</ButtonLink>
           </div>
         </div>
       </SectionWrapper>
@@ -283,12 +283,12 @@ function CreateProject({
     <section id="create-project" className="section-padding scroll-mt-24 py-16 sm:py-20 lg:py-24" aria-labelledby="create-title">
       <div className="mx-auto max-w-[1500px]">
         <div className="mb-10">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Page 2 - Create Project</p>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Showcase builder</p>
           <h2 id="create-title" className="font-display text-4xl font-medium leading-tight text-primary sm:text-5xl">
-            Create Project
+            Build a high-converting property showcase
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-secondary">
-            Fake the essentials: property info, Matterport URL, and a visual style.
+            Add the property essentials, connect a 3D tour, and choose the interior direction your sales team wants to lead with.
           </p>
         </div>
 
@@ -348,12 +348,12 @@ function CreateProject({
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/25 to-transparent" />
               <div className="absolute bottom-5 left-5 right-5">
                 <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-accent">Vr Boost</p>
-                <h3 className="font-display text-3xl font-medium">Fake project brief</h3>
+                <h3 className="font-display text-3xl font-medium">Showcase brief</h3>
               </div>
             </div>
             <div className="p-6 sm:p-8">
               <p className="text-sm leading-7 text-cream/70">
-                This prototype will generate a visual preview using static content and your selected style.
+                Turn property details, staging direction, and visit context into one premium sales presentation.
               </p>
             </div>
           </aside>
@@ -369,12 +369,12 @@ function ProjectPreview({ selectedStyle }: { selectedStyle: string }) {
       <div className="mx-auto max-w-[1500px]">
         <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Page 3 - Project Preview</p>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Buyer-ready preview</p>
             <h2 id="preview-title" className="font-display text-4xl font-medium leading-tight text-primary sm:text-5xl">
               Haussmann Apartment Preview
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-7 text-secondary">
-              Static preview using fake project data, selected style cards, and curated furniture cards.
+              A polished preview for sales teams, combining the selected interior direction with curated furniture and a guided visit entry point.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -464,7 +464,7 @@ function Footer() {
     <footer className="section-padding border-t border-border bg-primary py-12 text-cream" aria-label="Footer">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 text-sm text-cream/65 md:flex-row md:items-center md:justify-between">
         <a href="#" className="font-display text-2xl font-semibold tracking-[0.12em] text-cream">Vr Boost</a>
-        <p>Virtual Home Staging + Hub & Avatar</p>
+        <p>Premium Virtual Staging + Guided Buyer Journeys</p>
         <p>2026 VR Boost Agency</p>
       </div>
     </footer>

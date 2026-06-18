@@ -4,6 +4,32 @@ VR Boost is a front-end-only React/Vite prototype for a virtual real estate stag
 
 There is no backend, database, authentication, or API integration in this version. All pages use static mock data, external image URLs, and client-side routing based on the browser path.
 
+## Screenshots
+
+### Landing Page
+
+The landing page introduces the premium B2B positioning, main calls to action, and links to the dashboard and Hub & Avatar pages.
+
+![Landing page screenshot](Screenshots/LandingPage.png)
+
+### Showcase Builder
+
+The create project section lets the user enter property details, add a Matterport URL, and select a staging direction.
+
+![Create project screenshot](Screenshots/CreateProject.png)
+
+### Dashboard
+
+The dashboard shows the copied Fusion dashboard experience with glass panels, visit metrics, latest visits, and navigation to other app sections.
+
+![Dashboard screenshot](Screenshots/Dashbord.png)
+
+### Hub & Avatar
+
+The Hub & Avatar page presents guided visit sessions, avatar presets, and a premium remote walkthrough experience.
+
+![Hub and Avatar screenshot](Screenshots/Hub%26Staging.png)
+
 ## Pages
 
 ### Landing Page
