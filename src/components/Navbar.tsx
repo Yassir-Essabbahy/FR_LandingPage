@@ -30,13 +30,11 @@ export function Navbar() {
       }`}
       role="banner"
     >
-      <nav className="section-padding flex items-center justify-between h-20 lg:h-24" aria-label="Main navigation">
-        {/* Logo */}
-        <a href="#" className="font-display text-lg sm:text-xl lg:text-2xl font-semibold tracking-[0.15em] text-primary" aria-label="Roche Bobois Home">
-          ROCHE BOBOIS
+      <nav className="section-padding flex items-center justify-between h-20 lg:h-24" aria-label="Navigation principale">
+        <a href="#" className="font-display text-lg sm:text-xl lg:text-2xl font-semibold tracking-[0.12em] text-primary" aria-label="Vr Boost accueil">
+          Vr Boost
         </a>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
@@ -49,20 +47,18 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* CTA */}
         <a
-          href="#demo"
+          href="#create-project"
           className="hidden min-h-11 items-center border border-primary bg-primary px-6 py-2.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-[#2B2B2B] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream lg:inline-flex"
         >
-          Request Demo
+          Nouveau projet
         </a>
 
-        {/* Mobile menu button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="relative flex h-10 w-10 items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream lg:hidden"
           aria-expanded={isMobileMenuOpen}
-          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
         >
           <div className="flex flex-col gap-1.5">
             <span
@@ -79,7 +75,6 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -101,11 +96,11 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="#demo"
+                href="#create-project"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-2 inline-flex min-h-12 items-center justify-center border border-primary bg-primary px-6 py-3 text-sm font-medium text-cream transition-colors duration-300 hover:bg-[#2B2B2B]"
               >
-                Request Demo
+                Nouveau projet
               </a>
             </div>
           </motion.div>
