@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#F8F6F2',
-        primary: '#171717',
-        secondary: '#6B7280',
-        accent: '#C7B299',
-        card: '#FFFFFF',
-        border: '#E5E7EB',
+        cream: '#E7F1FA',
+        primary: '#1D1F2C',
+        secondary: '#4A4C56',
+        accent: '#6D8EA5',
+        card: '#FFFFFFCC',
+        border: '#BFD3E4',
       },
       fontFamily: {
         display: ['Playfair Display', 'Georgia', 'serif'],

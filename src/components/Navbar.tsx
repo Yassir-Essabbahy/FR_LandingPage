@@ -25,7 +25,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-cream shadow-[0_1px_0_0_rgba(23,23,23,0.08)]'
+          ? 'bg-cream/90 shadow-[0_1px_0_0_rgba(74,76,86,0.16)] backdrop-blur'
           : 'bg-transparent'
       }`}
       role="banner"
@@ -49,7 +49,7 @@ export function Navbar() {
 
         <a
           href="#create-project"
-          className="hidden min-h-11 items-center border border-primary bg-primary px-6 py-2.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-[#2B2B2B] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream lg:inline-flex"
+          className="hidden min-h-11 items-center border border-primary bg-primary px-6 py-2.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-[#2F4550] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream lg:inline-flex"
         >
           Nouveau projet
         </a>
@@ -98,7 +98,7 @@ export function Navbar() {
               <a
                 href="#create-project"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-2 inline-flex min-h-12 items-center justify-center border border-primary bg-primary px-6 py-3 text-sm font-medium text-cream transition-colors duration-300 hover:bg-[#2B2B2B]"
+                className="mt-2 inline-flex min-h-12 items-center justify-center border border-primary bg-primary px-6 py-3 text-sm font-medium text-cream transition-colors duration-300 hover:bg-[#2F4550]"
               >
                 Nouveau projet
               </a>

@@ -53,16 +53,19 @@ function ButtonLink({
 }: {
   href: string
   children: ReactNode
-  variant?: 'dark' | 'light'
+  variant?: 'dark' | 'light' | 'dashboard'
 }) {
   const isDark = variant === 'dark'
+  const isDashboard = variant === 'dashboard'
 
   return (
     <a
       href={href}
       className={`group inline-flex min-h-12 items-center justify-center gap-3 border px-6 text-sm font-medium transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream sm:px-7 ${
-        isDark
-          ? 'border-primary bg-primary text-cream hover:bg-[#2B2B2B]'
+        isDashboard
+          ? 'border-white/70 bg-white/40 text-primary shadow-[0_10px_30px_rgba(74,76,86,0.16)] backdrop-blur hover:-translate-y-0.5 hover:bg-white/65 hover:shadow-[0_16px_36px_rgba(74,76,86,0.22)]'
+          : isDark
+          ? 'border-primary bg-primary text-cream hover:bg-[#2F4550]'
           : 'border-border bg-transparent text-primary hover:border-accent hover:bg-white'
       }`}
     >
@@ -112,7 +115,7 @@ function Hero() {
           </motion.p>
           <motion.div variants={fadeUp} transition={{ duration: 0.8 }} className="mt-10 flex flex-col gap-4 sm:flex-row">
             <ButtonLink href="#create-project">Create Project</ButtonLink>
-            <ButtonLink href="/dashboard" variant="light">Open Dashboard</ButtonLink>
+            <ButtonLink href="/dashboard" variant="dashboard">Open Dashboard</ButtonLink>
             <ButtonLink href="#solutions" variant="light">Explore benefits</ButtonLink>
           </motion.div>
         </motion.div>
@@ -251,7 +254,7 @@ function ActionButton({
   icon?: IconComponent
 }) {
   const variants = {
-    primary: 'border-primary bg-primary text-cream hover:bg-[#2B2B2B]',
+    primary: 'border-primary bg-primary text-cream hover:bg-[#2F4550]',
     secondary: 'border-border bg-white text-primary hover:border-accent',
   }
 
@@ -378,7 +381,7 @@ function ProjectPreview({ selectedStyle }: { selectedStyle: string }) {
             <ActionButton variant="secondary" icon={Share2}>Share Project</ActionButton>
             <a
               href="/hub-avatar"
-              className="inline-flex min-h-12 items-center justify-center gap-3 border border-primary bg-primary px-5 text-sm font-medium text-cream transition hover:bg-[#2B2B2B] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
+              className="inline-flex min-h-12 items-center justify-center gap-3 border border-primary bg-primary px-5 text-sm font-medium text-cream transition hover:bg-[#2F4550] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
             >
               <MonitorPlay className="h-4 w-4" aria-hidden="true" />
               Join Hub & Avatar
@@ -492,7 +495,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-cream text-primary">
+    <div className="dashboard-bg min-h-screen overflow-x-hidden text-primary">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-primary focus:px-4 focus:py-3 focus:text-cream"
